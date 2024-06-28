@@ -8,6 +8,6 @@ public class FixedSalaryCalculator implements SalaryCalculator {
     @Override
     public double calculateSalary() {
         // Example fixed salary calculation
-        return 15000.0;
+        return 25000.0;
     }
 }

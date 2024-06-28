@@ -16,26 +16,23 @@ public class SalaryController {
         this.hourlySalaryEmployee = new Employee(hourlySalaryCalculator);
     }
 
-    @GetMapping("/employee/salary/fixed")
+    @GetMapping("/salary/fixed")
     public SalaryDetails getFixedSalaryEmployeeSalary() {
         double salary = fixedSalaryEmployee.getSalary();
         String employeeType = "Fixed";
         // Additional data you want to include
         // For example: String employeeName = fixedSalaryEmployee.getName();
         // For simplicity, let's assume all employees have the same name in this example
-        String employeeName = "Hansy Flick";
+        String employeeName = "Jurgen Kloppo";
 
         return new SalaryDetails(employeeName, employeeType, salary);
     }
 
-    @GetMapping("/employee/salary/hourly")
+    @GetMapping("/salary/hourly")
     public SalaryDetails getHourlySalaryEmployeeSalary() {
         double salary = hourlySalaryEmployee.getSalary();
         String employeeType = "Hourly";
-        // Additional data you want to include
-        // For example: String employeeName = hourlySalaryEmployee.getName();
-        // For simplicity, let's assume all employees have the same name in this example
-        String employeeName = "Micky Doeal";
+        String employeeName = "Joe Gomez";
 
         return new SalaryDetails(employeeName, employeeType, salary);
     }
@@ -74,6 +71,15 @@ public class SalaryController {
 
         public void setSalary(double salary) {
             this.salary = salary;
+        }
+
+        @Override
+        public String toString() {
+            return "SalaryDetails{" +
+                    "Name='" + employeeName + '\'' +
+                    ", employeeType='" + employeeType + '\'' +
+                    ", salary=" + salary +
+                    '}';
         }
     }
 }

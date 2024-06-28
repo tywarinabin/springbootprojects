@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 public class HourlySalaryCalculator implements SalaryCalculator {
     @Override
     public double calculateSalary() {
-        // Example hourly salary calculation
-        double hourlyRate = 200.0;
+        // Example of  hourly salary calculation
+        double hourlyRate = 400.0;
         int hoursWorked = 160;
         return hourlyRate * hoursWorked;
     }
