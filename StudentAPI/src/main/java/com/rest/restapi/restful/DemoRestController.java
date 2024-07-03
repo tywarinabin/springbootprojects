@@ -13,7 +13,8 @@ import java.util.List;
 @RequestMapping("/api")
 public class DemoRestController {
     List<Student> studentList ;
-
+// PostConstruct Method Run only Once after running an application so we load data once during initialization and use that data as many time.
+    
     @PostConstruct
     public void loadData(){
         studentList = new ArrayList<>();
