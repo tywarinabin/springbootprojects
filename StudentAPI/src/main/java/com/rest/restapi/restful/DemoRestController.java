@@ -52,4 +52,14 @@ public class DemoRestController {
 
         return new ResponseEntity<>(studentErrorResponse,HttpStatus.NOT_FOUND);
     }
+    // Handle Exception for all like String, Number, etc
+     @ExceptionHandler
+    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException err){
+        StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
+        studentErrorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
+        studentErrorResponse.setMessage(err.getMessage());
+        studentErrorResponse.setTimestamp(System.currentTimeMillis());
+
+        return new ResponseEntity<>(studentErrorResponse,HttpStatus.BAD_REQUEST);
+    }
 }
