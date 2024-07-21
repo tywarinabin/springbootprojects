@@ -13,7 +13,8 @@ import java.util.List;
 @RequestMapping("/api")
 public class DemoRestController {
     List<Student> studentList ;
-
+// PostConstruct Method Run only Once after running an application so we load data once during initialization and use that data as many time.
+    
     @PostConstruct
     public void loadData(){
         studentList = new ArrayList<>();
@@ -50,5 +51,15 @@ public class DemoRestController {
         studentErrorResponse.setTimestamp(System.currentTimeMillis());
 
         return new ResponseEntity<>(studentErrorResponse,HttpStatus.NOT_FOUND);
+    }
+    // Handle Exception for all like String, Number, etc
+     @ExceptionHandler
+    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException err){
+        StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
+        studentErrorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
+        studentErrorResponse.setMessage(err.getMessage());
+        studentErrorResponse.setTimestamp(System.currentTimeMillis());
+
+        return new ResponseEntity<>(studentErrorResponse,HttpStatus.BAD_REQUEST);
     }
 }
