@@ -7,6 +7,5 @@ public interface EmployeeService {
     List<Employees> findAll();
     Employees findById(int id);
     Employees save(Employees e);
-    Employees update(Employees e);
     void deleteById(int id);
 }

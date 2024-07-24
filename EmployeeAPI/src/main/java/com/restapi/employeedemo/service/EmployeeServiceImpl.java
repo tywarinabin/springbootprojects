@@ -30,14 +30,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional
     public Employees save(Employees e) {
         // Set id of employee to 0 for addition of new data to the database
-        e.setId(0);
-        Employees emp = employeeDAO.save(e);
-        return emp;
-    }
-
-    @Override
-    @Transactional
-    public Employees update(Employees e) {
         Employees emp = employeeDAO.save(e);
         return emp;
     }

@@ -20,13 +20,30 @@ public class EmployeeRestController {
     public List<Employees> getAll(){
        return employeeService.findAll();
     }
+
     @GetMapping("/employees/{empId}")
     public Employees getEmp(@PathVariable int empId){
         return employeeService.findById(empId);
     }
+
+
     @PostMapping("/employees")
     public Employees save(@RequestBody Employees e){
+        e.setId(0);
         return employeeService.save(e);
+    }
+
+    @PutMapping("/employees")
+    public Employees update(@RequestBody Employees e)
+    {
+        return employeeService.save(e);
+    }
+
+
+    @DeleteMapping("/employees/{empId}")
+    public String deleteEmployee(@PathVariable int empId){
+        employeeService.deleteById(empId);
+        return "Deleted employee of ID: "+empId;
     }
 
 }
